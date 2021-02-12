@@ -1,0 +1,47 @@
+body {
+    background-color: rgba(212, 17, 212, 0.959);
+}
+
+.pricing-plan {
+    width: 300px;
+    border-radius: 25px;
+    box-shadow: 0 0 5px rgb(255, 212, 255);
+    border: 3px solid;
+    overflow: hidden;
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: whitesmoke;
+    margin: 15px;
+}
+
+.pricing-plan__header {
+    padding: 25px;
+    background-color: rgba(255, 197, 252, 0.4);
+}
+
+.pricing-plan__title,
+.pricing-plan__summary {
+    text-align: center;
+    margin: 0;
+}
+
+.pricing-plan__description {
+    padding: 25px;
+}
+
+.pricing-plan__list {
+    padding: 0;
+    margin: 0;
+    table-layout: auto;
+    width: 100%;
+    font-size: 1.3em;
+}
+
+.container {
+    background-color: rgba(212, 17, 212, 0.959);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}

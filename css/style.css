@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    color: #ccc;
+    user-select: none;
+  }
+  
+  .form {
+    width: 100%;
+    text-align: center;
+  }
+    
+  .tasks {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    align-items: center;
+    background: #ccc;
+    color: #000;
+  }
+
+  .panel {
+    margin: auto;
+    width: 40%;
+    float: left;
+    overflow: hidden; /* because children will be floated */
+  }
+
+#wrap {
+    width: 57%;
+    height: 700px;
+    float: left;
+    overflow: hidden; /* because children will be floated */
+ }
+
+ #slides {
+    height: 650px;
+    width: 100%;
+    background-color: white;
+    padding-bottom: 20px;
+  }
+
+

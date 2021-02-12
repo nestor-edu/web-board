@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- CSS BASE -->
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- BOOTSWATCH -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/lumen/bootstrap.min.css">
+    <!-- ANIMATE CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+    <!-- DATA TABLE -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
+    <!-- SCRIPT JQUERY -->
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <!-- SCRIPT DATA TABLES -->
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+
+
+    <title>Digital Menu Board</title>
+</head>
+
+<body>
+    <div class="panel">
+        <form id="form" class="form">
+
+            <div class="card m-3">
+                <h5 class="card-header">Mantenimiento de Precios</h5>
+                <div class="card-body">
+                    <table>
+                        <tr>
+                            <td>
+                                <h6 class="float-left">Producto</h6>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control ml-3" size="50" placeholder="Producto"
+                                    name="task-producto" id="task-producto">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <h6 class="float-left">Precio</h6>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control ml-3" placeholder="Precio" name="task-precio"
+                                    id="task-precio">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="card-footer text-muted">
+                    <button class="btn btn-primary float-right" id="btn-task-form">Agregar Producto</button>
+                </div>
+            </div>
+
+        </form>
+
+
+        <div class="card border-secondary mb-3 m-3">
+            <div class="card-header">Detalle de precios</div>
+            <div class="card-body">
+
+                <table id="example" class="display" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Eliminar</th>
+                            <th>Editar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tasks-container">
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="wrap" class="card border-dark mb-3 m-3">
+        <div class="card-header">Vista Previa</div>
+        <div class="card-body">
+            <div id="slide">
+                <iframe id="vistaprevia" name="vistaprevia" title="Vista Previa" width="100%" height="550px"
+                    frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="slides/slide1.html">
+                </iframe>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-info" id="btn-task-form">&lt;</button>
+            <button class="btn btn-info" id="btn-task-form">&gt;</button>
+            <button class="btn btn-primary" id="btn-task-form" onclick="refreshIframe()">Refrescar</button>
+
+            <button class="btn btn-success float-right" id="btn-task-form" onclick="exportImage()">Exportar
+                Menu</button>
+        </div>
+    </div>
+
+
+    <!-- FIREBASE -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-firestore.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyDpSVsGDKdvGocC7qEhiJDZrV8XDeBIFZE",
+            authDomain: "digital-menu-4b033.firebaseapp.com",
+            projectId: "digital-menu-4b033",
+            storageBucket: "digital-menu-4b033.appspot.com",
+            messagingSenderId: "801612787091",
+            appId: "1:801612787091:web:a56ab9386b7844a245cc66",
+            measurementId: "G-XWN7QTQDVW"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="js/index.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+
+        const myframe = document.getElementById('vistaprevia');
+
+        function refreshIframe() {
+            myframe.src = myframe.src;
+        }
+
+        function exportImage() {
+            myframe.contentWindow.postMessage('Exportar Imagen', '*');
+            return false;
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tarasca</title>
+        <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../css/slide.css">    
+    </head>
+
+    <body>
+        <div id="container" class="container" >
+                <section class="pricing-plan" id="section-1">
+                    <div class="pricing-plan__header">
+                        <h1 class="pricing-plan__title">Menu</h1>
+                    </div>
+                    <div>
+                        <table id="menu1" class="menu1">
+                        </table>
+                    </div>
+                </section>
+
+                <section class="pricing-plan" id="section-2">
+                    <div class="pricing-plan__header">
+                        <h1 class="pricing-plan__title">Menu</h1>
+                    </div>
+                    <div>
+                        <table id="menu2" class="menu2">
+                        </table>
+                    </div>
+                </section>
+
+                <section class="pricing-plan" id="section-3">
+                    <div class="pricing-plan__header">
+                        <h1 class="pricing-plan__title">Menu</h1>
+                    </div>
+                    <div>
+                        <table id="menu3" class="menu3">
+                        </table>
+                    </div>
+                </section>
+        </div>
+
+        <!-- FIREBASE -->
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-firestore.js"></script>
+
+        <script>
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            var firebaseConfig = {
+            apiKey: "AIzaSyBGWsSQlbR-hhIOYC4GfiMXXzzvWlScg_E",
+            authDomain: "webboard-ac4d4.firebaseapp.com",
+            projectId: "webboard-ac4d4",
+            storageBucket: "webboard-ac4d4.appspot.com",
+            messagingSenderId: "583216462104",
+            appId: "1:583216462104:web:dd4334a505625480d4466d",
+            measurementId: "G-26TYCZPKB1"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+        </script> 
+        
+        <script src="../js/slide.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/html2canvas.js"></script>
+        <script>
+
+            window.addEventListener('message', function(event) {
+                var domElement = document.getElementById('container');
+                downloadCanvas(domElement, 'imagen.png');
+            });
+
+            function downloadCanvas(domElement, filename) {            
+                // Utilizando la función html2canvas para hacer la conversión
+                html2canvas(domElement, {
+                    onrendered: function(domElementCanvas) {
+                        // Obteniendo el contexto del canvas ya generado
+                        var context = domElementCanvas.getContext('2d');
+            
+                        // Creando enlace para descargar la imagen generada
+                        var link = document.createElement('a');
+                        link.href = domElementCanvas.toDataURL("image/png");
+                        link.download = filename;
+            
+                        // Chequeando para browsers más viejos
+                        if (document.createEvent) {
+                            var event = document.createEvent('MouseEvents');
+                            // Simulando clic para descargar
+                            event.initMouseEvent("click", true, true, window, 0,
+                                0, 0, 0, 0,
+                                false, false, false, false,
+                                0, null);
+                            link.dispatchEvent(event);
+                        } else {
+                            // Simulando clic para descargar
+                            link.click();
+                        }
+                    }
+                });
+            }
+        
+            // Haciendo la conversión y descarga de la imagen al presionar el botón
+            function descargaImagen() {
+                // Obteniendo la etiqueta la cual se desea convertir en imagen
+                
+            }
+        </script>
+    </body>
+
+</html>
